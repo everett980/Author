@@ -10,6 +10,12 @@ app.use(session({
 	secret: "Darth Vader is Luke's Father"
 }))
 
+app.use(function(req, res, next) {
+		console.log(req.session.userid);
+		next();
+});
+
+
 // app.use(function (req, res, next) {
 //   if (!req.session.counter) req.session.counter = 0;
 //   console.log('counter', ++req.session.counter);
