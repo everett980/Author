@@ -33,7 +33,7 @@ router.post('/', function (req, res, next) {
 });
 
 router.post('/login', function (req, res, next) {
-	console.log("REQ: ",Object.keys(req))
+	console.log("REQ: ", req.session)
 	User.findOne({email: req.body.email, password: req.body.password})
 	.then(function (user) {
 		if(user){

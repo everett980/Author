@@ -2,8 +2,19 @@
 
 var app = require('express')();
 var path = require('path');
+var session = require('express-session')
 
 app.use(require('./logging.middleware'));
+
+app.use(session({
+	secret: "Darth Vader is Luke's Father"
+}))
+
+// app.use(function (req, res, next) {
+//   if (!req.session.counter) req.session.counter = 0;
+//   console.log('counter', ++req.session.counter);
+//   next();
+// });
 
 app.use(require('./requestState.middleware'));
 
