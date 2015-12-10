@@ -32,6 +32,19 @@ router.post('/', function (req, res, next) {
 	.then(null, next);
 });
 
+router.post('/login', function (req, res, next) {
+	console.log("REQ: ",Object.keys(req))
+	User.findOne({email: req.body.email, password: req.body.password})
+	.then(function (user) {
+		if(user){
+			res.status(200).json(user);
+		}else{
+			 res.status(401).send("Aint found")
+		}
+	})
+	.then(null, next);
+});
+
 router.get('/:id', function (req, res, next) {
 	req.requestedUser.getStories()
 	.then(function (stories) {
